@@ -9,9 +9,7 @@
 
 ## 🔗 Live Prototype Link
 
-**View Prototype:** [https://design.penpot.app/#/workspace?team-id=8fd8c29f-33f9-8038-8007-3067a4f7a237&file-id=8fd8c29f-33f9-8038-8007-307038dad31e&page-id=8fd8c29f-33f9-8038-8007-307038dad31f]
-
-
+**View Prototype:* [*https://design.penpot.app/#/view?file-id=8fd8c29f-33f9-8038-8007-307038dad31e&page-id=8fd8c29f-33f9-8038-8007-307038dad31f&section=interactions&index=0&share-id=8fd8c29f-33f9-8038-8007-340b3ff44c00]
 ---
 
 ## 📋 Prototype Contents
