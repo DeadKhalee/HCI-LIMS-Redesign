@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIMS Login Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+        }
+        
+        /* Header */
+        .header {
+            background: #e0e0e0;
+            padding: 20px 40px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 50px;
+            border: 2px dashed #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: white;
+        }
+        
+        .back-link {
+            padding: 8px 16px;
+            border: 2px solid #666;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Login Container */
+        .login-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        
+        /* Left Side - Login Form */
+        .login-form-side {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-header {
+            margin-bottom: 40px;
+        }
+        
+        .login-header h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .login-header p {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            background: white;
+            font-size: 16px;
+        }
+        
+        .form-input:focus {
+            border-color: #333;
+        }
+        
+        .form-helper {
+            font-size: 13px;
+            color: #666;
+            margin-top: 6px;
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #666;
+        }
+        
+        .forgot-link {
+            font-size: 14px;
+            color: #3498db;
+            cursor: pointer;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 16px;
+            background: #333;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+        
+        .login-button:hover {
+            background: #555;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .divider:before,
+        .divider:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #ddd;
+        }
+        
+        .divider:before {
+            left: 0;
+        }
+        
+        .divider:after {
+            right: 0;
+        }
+        
+        .register-link {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+        }
+        
+        .register-link strong {
+            color: #3498db;
+            cursor: pointer;
+        }
+        
+        .security-note {
+            margin-top: 40px;
+            padding: 16px;
+            background: #f0f8ff;
+            border-left: 4px solid #3498db;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .security-note strong {
+            color: #2980b9;
+        }
+        
+        /* Right Side - Info Panel */
+        .info-side {
+            background: #f9f9f9;
+            padding: 60px;
+            border-left: 2px solid #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-section {
+            margin-bottom: 40px;
+        }
+        
+        .info-section h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: #333;
+        }
+        
+        .info-section p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 28px;
+            font-size: 14px;
+            color: #555;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .help-box {
+            background: white;
+            padding: 24px;
+            border: 2px solid #ddd;
+            margin-top: 30px;
+        }
+        
+        .help-box h4 {
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .help-box p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        
+        .help-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .help-btn {
+            padding: 10px 16px;
+            border: 2px solid #3498db;
+            background: white;
+            color: #3498db;
+            font-size: 13px;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+        }
+        
+        /* Annotations */
+        .annotation {
+            background: #fffacd;
+            padding: 12px;
+            margin: 20px 40px;
+            border-left: 4px solid #f39c12;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        .annotation strong {
+            color: #e67e22;
+        }
+        
+        .heuristic-tag {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        /* Design Notes */
+        .design-notes {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 40px;
+            border-top: 2px solid #333;
+        }
+        
+        .design-notes h3 {
+            color: #3498db;
+            margin-bottom: 16px;
+        }
+        
+        .design-notes ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .design-notes ul li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">MoL LOGO</div>
+            <div class="back-link">← Back to Home</div>
+        </div>
+        
+        <div class="annotation">
+            <strong>Design Fix #1:</strong> Simple header with clear way to exit. No overwhelming legal text upfront. <span class="heuristic-tag">H#3 User Control</span>
+        </div>
+        
+        <!-- Login Container -->
+        <div class="login-container">
+            <!-- Left Side - Login Form -->
+            <div class="login-form-side">
+                <div class="login-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to access your land and property services</p>
+                </div>
+                
+                <div class="annotation" style="margin: 0 0 20px 0; border-left: none; background: #e8f5e9; border-left: 4px solid #27ae60;">
+                    <strong>Design Fix #2:</strong> Friendly, welcoming language instead of intimidating legal disclaimer. <span class="heuristic-tag">H#2 Real World Match</span>
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email Address or National ID *</label>
+                        <div class="form-input">[Input Field]</div>
+                        <div class="form-helper">Enter your registered email or ID number</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <div class="form-input">[Password Input] 👁</div>
+                        <div class="form-helper">Minimum 8 characters</div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <div class="checkbox"></div>
+                            <span>Remember me</span>
+                        </div>
+                        <div class="forgot-link">Forgot password?</div>
+                    </div>
+                    
+                    <div class="annotation" style="margin: 0 0 20px 0; border-left: none; background: #fff3cd; border-left: 4px solid #f39c12;">
+                        <strong>Design Fix #3:</strong> "Forgot password" clearly visible. Input hints help prevent errors. <span class="heuristic-tag">H#5 Error Prevention</span> <span class="heuristic-tag">H#9 Error Recovery</span>
+                    </div>
+                    
+                    <button type="submit" class="login-button">Sign In</button>
+                </form>
+                
+                <div class="divider">OR</div>
+                
+                <div class="register-link">
+                    Don't have an account? <strong>Register Now</strong>
+                </div>
+                
+                <div class="security-note">
+                    <strong>🔒 Your data is secure:</strong> We use industry-standard encryption to protect your information. Never share your password with anyone.
+                </div>
+                
+                <div class="annotation" style="margin: 20px 0 0 0; border-left: none; background: #e3f2fd; border-left: 4px solid #2196f3;">
+                    <strong>Design Fix #4:</strong> Security message is positive and reassuring, not threatening. Moved legal details to footer. <span class="heuristic-tag">H#2 Real World Match</span>
+                </div>
+            </div>
+            
+            <!-- Right Side - Info Panel -->
+            <div class="info-side">
+                <div class="info-section">
+                    <h3>What You Can Do</h3>
+                    <p>After signing in, you'll be able to:</p>
+                    <ul class="feature-list">
+                        <li>View and manage your properties</li>
+                        <li>Make payments for leases and fees</li>
+                        <li>Submit and track applications</li>
+                        <li>Download certificates and documents</li>
+                        <li>Update your account information</li>
+                        <li>Receive important notifications</li>
+                    </ul>
+                </div>
+                
+                <div class="help-box">
+                    <h4>Need Help?</h4>
+                    <p>Our support team is here to assist you with any login issues or questions.</p>
+                    <div class="help-buttons">
+                        <div class="help-btn">📞 Call Support</div>
+                        <div class="help-btn">💬 Live Chat</div>
+                    </div>
+                </div>
+                
+                <div class="annotation" style="margin: 20px 0 0 0; border-left: none; background: #f3e5f5; border-left: 4px solid #9c27b0;">
+                    <strong>Design Fix #5:</strong> Info panel shows value of logging in and provides help access. Reduces anxiety. <span class="heuristic-tag">H#10 Help & Documentation</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Design Notes -->
+        <div class="design-notes">
+            <h3>🎨 Wireframe Design Decisions</h3>
+            <ul>
+                <li><strong>Split Layout:</strong> Left = action (login), Right = information and help</li>
+                <li><strong>Welcoming Tone:</strong> "Welcome Back" instead of legal warnings</li>
+                <li><strong>Clear Fields:</strong> Labels above inputs, helper text shows format requirements</li>
+                <li><strong>Forgot Password Prominent:</strong> Easy to find when users need it</li>
+                <li><strong>Password Visibility Toggle:</strong> Eye icon allows users to see what they type</li>
+                <li><strong>Remember Me Option:</strong> Convenience for frequent users</li>
+                <li><strong>Registration Link:</strong> For users who came to wrong page</li>
+                <li><strong>Positive Security Message:</strong> Reassures without threatening</li>
+                <li><strong>Help Immediately Accessible:</strong> Support options visible without scrolling</li>
+                <li><strong>Value Proposition:</strong> Reminds users why they're logging in</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">✅ Heuristics Addressed</h3>
+            <ul>
+                <li><strong>H#2 Real World Match:</strong> Friendly, conversational language throughout</li>
+                <li><strong>H#3 User Control:</strong> Clear exit option, remember me, password visibility</li>
+                <li><strong>H#5 Error Prevention:</strong> Helper text shows format requirements upfront</li>
+                <li><strong>H#6 Recognition over Recall:</strong> Labels clearly show what's needed</li>
+                <li><strong>H#9 Error Recovery:</strong> Forgot password prominently displayed</li>
+                <li><strong>H#10 Help & Documentation:</strong> Support options immediately visible</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">📋 Legal/Terms Handling</h3>
+            <ul>
+                <li><strong>Move to Footer:</strong> Full terms and conditions in footer link</li>
+                <li><strong>Checkbox at Registration:</strong> "I agree to Terms" at account creation, not login</li>
+                <li><strong>Security Badge:</strong> Trust indicators (SSL, encryption) in footer</li>
+                <li><strong>Privacy Link:</strong> Easily accessible but not blocking main task</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">🔐 Security Without Fear</h3>
+            <ul>
+                <li>Original: "Strictly prohibited... may result in legal action..."</li>
+                <li>Redesign: "Your data is secure... we protect your information"</li>
+                <li>Focus on what system DOES for user, not what it DOES TO violators</li>
+                <li>Legal protection through proper authentication, not threatening text</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

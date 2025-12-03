@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIMS Registration Selection Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+        }
+        
+        /* Header */
+        .header {
+            background: #e0e0e0;
+            padding: 20px 40px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 50px;
+            border: 2px dashed #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: white;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .help-link {
+            padding: 8px 16px;
+            border: 2px solid #666;
+            background: white;
+            font-size: 14px;
+        }
+        
+        .login-link {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 16px 40px;
+            background: #fafafa;
+            border-bottom: 2px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 40px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #333;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Account Type Cards */
+        .account-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .account-card {
+            border: 3px solid #ddd;
+            padding: 40px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .account-card:hover {
+            border-color: #333;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .account-card .icon {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 24px;
+        }
+        
+        .account-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .account-card .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        
+        .account-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .account-card .features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .account-card .features li {
+            padding: 8px 0;
+            padding-left: 24px;
+            font-size: 14px;
+            color: #555;
+            position: relative;
+        }
+        
+        .account-card .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .select-button {
+            padding: 14px 32px;
+            background: #333;
+            color: white;
+            border: 2px solid #333;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .select-button:hover {
+            background: #555;
+        }
+        
+        .learn-more {
+            margin-top: 12px;
+            text-align: center;
+            font-size: 14px;
+            color: #3498db;
+            cursor: pointer;
+        }
+        
+        /* Help Section */
+        .help-section {
+            background: #f9f9f9;
+            padding: 40px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .help-section h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: #333;
+        }
+        
+        .help-section p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .help-button {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        /* Annotations */
+        .annotation {
+            background: #fffacd;
+            padding: 12px;
+            margin: 20px 40px;
+            border-left: 4px solid #f39c12;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        .annotation strong {
+            color: #e67e22;
+        }
+        
+        .heuristic-tag {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        /* Design Notes */
+        .design-notes {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 40px;
+            border-top: 2px solid #333;
+        }
+        
+        .design-notes h3 {
+            color: #3498db;
+            margin-bottom: 16px;
+        }
+        
+        .design-notes ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .design-notes ul li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">MoL LOGO</div>
+            <div class="header-right">
+                <div class="help-link">❓ Help</div>
+                <div class="login-link">Already have an account? <strong>Login</strong></div>
+            </div>
+        </div>
+        
+        <div class="annotation">
+            <strong>Design Fix #1:</strong> Simple header with help easily accessible. "Already have account?" reduces duplicate registrations. <span class="heuristic-tag">H#5 Error Prevention</span>
+        </div>
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            Home <span>→</span> Create Account <span>→</span> Select Account Type
+        </div>
+        
+        <div class="annotation">
+            <strong>Design Fix #2:</strong> Breadcrumb shows users where they are and allows easy navigation back. <span class="heuristic-tag">H#1 System Status</span> <span class="heuristic-tag">H#3 User Control</span>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="page-header">
+                <h1>Choose Your Account Type</h1>
+                <p>Select the option that best describes you. You can change this later in your account settings if needed.</p>
+            </div>
+            
+            <div class="annotation">
+                <strong>Design Fix #3:</strong> Clear heading with reassurance that choice isn't permanent. Reduces anxiety. <span class="heuristic-tag">H#3 User Control</span> <span class="heuristic-tag">H#5 Error Prevention</span>
+            </div>
+            
+            <div class="account-types">
+                <!-- Property Owner Card -->
+                <div class="account-card">
+                    <div class="icon">🏠</div>
+                    <h3>Property Owner or Buyer</h3>
+                    <div class="subtitle">For individuals managing personal property</div>
+                    <p>Choose this if you own property, are buying land, or need to manage residential or commercial properties.</p>
+                    
+                    <ul class="features">
+                        <li>Register and view your properties</li>
+                        <li>Make lease and ground rent payments</li>
+                        <li>Submit required documents</li>
+                        <li>Track application status</li>
+                        <li>Receive notifications and reminders</li>
+                    </ul>
+                    
+                    <div class="select-button">Select This Account</div>
+                    <div class="learn-more">Learn more →</div>
+                </div>
+                
+                <!-- Professional Card -->
+                <div class="account-card">
+                    <div class="icon">💼</div>
+                    <h3>Land Professional</h3>
+                    <div class="subtitle">For surveyors, lawyers, and planners</div>
+                    <p>Choose this if you're a registered professional working with land transactions on behalf of clients.</p>
+                    
+                    <ul class="features">
+                        <li>Manage multiple client properties</li>
+                        <li>Submit professional reports and surveys</li>
+                        <li>Access advanced land search tools</li>
+                        <li>Bulk document submission</li>
+                        <li>Professional dashboard and analytics</li>
+                    </ul>
+                    
+                    <div class="select-button">Select This Account</div>
+                    <div class="learn-more">Learn more →</div>
+                </div>
+            </div>
+            
+            <div class="annotation">
+                <strong>Design Fix #4:</strong> Simplified from 4 confusing options to 2 clear categories. Plain language headings. Detailed descriptions show what each allows. Icons provide visual distinction. <span class="heuristic-tag">H#2 Real World Match</span> <span class="heuristic-tag">H#6 Recognition</span> <span class="heuristic-tag">H#8 Minimalist</span>
+            </div>
+            
+            <!-- Help Section -->
+            <div class="help-section">
+                <h3>Not Sure Which Account is Right for You?</h3>
+                <p>We can help you choose the best account type based on your needs.</p>
+                <div class="help-button">📞 Contact Support</div>
+                <div class="help-button" style="margin-left: 16px;">💬 Live Chat</div>
+            </div>
+            
+            <div class="annotation">
+                <strong>Design Fix #5:</strong> Explicit help option for confused users. Reduces abandonment and wrong choices. <span class="heuristic-tag">H#10 Help & Documentation</span>
+            </div>
+        </div>
+        
+        <!-- Design Notes -->
+        <div class="design-notes">
+            <h3>🎨 Wireframe Design Decisions</h3>
+            <ul>
+                <li><strong>Reduced Complexity:</strong> 4 confusing options → 2 clear categories (most professionals can self-identify)</li>
+                <li><strong>User-Friendly Labels:</strong> "Property Owner or Buyer" instead of "Lessee/Applicant"</li>
+                <li><strong>Feature Lists:</strong> Shows exactly what you can do with each account type</li>
+                <li><strong>Visual Distinction:</strong> Icons and card layout make options scannable</li>
+                <li><strong>Reassurance:</strong> "You can change this later" reduces decision anxiety</li>
+                <li><strong>Breadcrumb Navigation:</strong> Shows location and path back</li>
+                <li><strong>Help Accessibility:</strong> Multiple ways to get help if confused</li>
+                <li><strong>Consistent Buttons:</strong> Same style for all primary actions</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">✅ Heuristics Addressed</h3>
+            <ul>
+                <li><strong>H#1 System Status:</strong> Breadcrumb shows current location</li>
+                <li><strong>H#2 Real World Match:</strong> Plain language, user-focused categories</li>
+                <li><strong>H#3 User Control:</strong> Reassurance that choice can be changed</li>
+                <li><strong>H#5 Error Prevention:</strong> Clear descriptions prevent wrong choices</li>
+                <li><strong>H#6 Recognition over Recall:</strong> Icons, clear labels, feature lists</li>
+                <li><strong>H#8 Minimalist Design:</strong> Removed unnecessary legal text from this step</li>
+                <li><strong>H#10 Help & Documentation:</strong> Help prominently available</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">💡 Further Improvements</h3>
+            <ul>
+                <li>Add wizard: "Answer 3 questions to find your account type"</li>
+                <li>Show example users for each type: "John owns a house → Property Owner"</li>
+                <li>Add comparison table if users need more details</li>
+                <li>Include testimonials or usage stats</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
